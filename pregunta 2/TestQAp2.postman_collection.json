@@ -1,0 +1,78 @@
+{
+	"info": {
+		"_postman_id": "86ca1fa2-8b91-4f2a-a0d7-624bfe77acf7",
+		"name": "TestQAp2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://restcountries.eu/rest/v2/name/chile",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a333564c-4d6e-42d8-aa95-dc1f6c7c96aa",
+						"exec": [
+							"\r",
+							"pm.test(\"Validar Respuesta  200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que el Formato sea JSON\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Validar que el nombre del país \" +jsonData[0].name +\" es un string\", function () {\r",
+							"    pm.expect('name').to.be.a('string');\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Validar que el código ISO 3166-1 alpha-2 efectivamente sea de longitud 2 caracteres: \"+jsonData[0].alpha2Code , function () {\r",
+							"    var alpha2Code = jsonData[0].alpha2Code;\r",
+							"    pm.expect(alpha2Code.length).to.equal(2);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que el código ISO 3166-1 alpha-3 efectivamente sea de longitud 3 caracteres: \"+jsonData[0].alpha3Code, function () {\r",
+							"    pm.expect(jsonData[0].alpha3Code.length).to.equal(3);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que la propiedad 'translations' sea un objeto \", function () {\r",
+							"     pm.expect(jsonData[0].translations).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar que la propiedad 'languages' sea un arreglo (array) \", function () {\r",
+							"     pm.expect(jsonData[0].languages).to.be.an('array');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://restcountries.eu/rest/v2/name/chile",
+					"protocol": "https",
+					"host": [
+						"restcountries",
+						"eu"
+					],
+					"path": [
+						"rest",
+						"v2",
+						"name",
+						"chile"
+					]
+				},
+				"description": "restcountries: api acerca de: Chile"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
