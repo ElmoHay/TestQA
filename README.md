@@ -10,8 +10,8 @@
 # 2. Este Repositorio (https://github.com/ElmoHay/TestQA)
 #  pregunta 1 (*completada*) Los test solicitados en un archivo .json para Postman
 
-# pregunta 2 (*completada*)
+# pregunta 2 (*completada*) + 
   
-pregunta 3 (pendiente)
+# pregunta 3 (*completada*)
 
 pregunta 4 (pendiente)
